@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
    
     	<script>
 	        (function(d) {
@@ -14,9 +14,10 @@
 	          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
 	        })(document);
      	 </script>
-       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+       <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
 
 	<title>Swimming Sparrow</title>
     <style>
@@ -28,9 +29,9 @@
 		    font-style: normal;
 		}
 		@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css); .jejumyeongjo * { font-family: 'Jeju Myeongjo', serif; }
-    *{background-color: #F2F2F2; margin:0; }
+    *{background-color: #F2F2F2; margin:0; scroll-behavior: smooth;}
     ul{list-style-type: none;}
-    a{text-decoration: none; color:black;}
+    a{text-decoration: none; color:black; cursor: pointer;}
     
 		#menubutton{display: none;}
     .top{z-index: 10;}
@@ -40,7 +41,7 @@
     .menuWin{
       box-sizing:border-box;
       justify-content: space-around; vertical-align: middle; align-items: center; text-align: center;
-      padding-top:24vh;
+      padding-top:22vh;
       width:100vw;
       height:100vh;
       background-color: #F2F2F2;
@@ -48,13 +49,15 @@
       z-index:1;
       top:-100vh;
       left:0;
+      opacity:0;
       transition:0.35s;
     }
+    .bottom{justify-content: space-around; margin-bottom: 5vh; }
     .buttons{width:100vw; height:100vh;  justify-content: space-around; vertical-align: middle; align-items: center; text-align: center;  }
 
      .menuWin p{font-family:'GmarketSansMedium'; font-weight:normal; font-size:5vh; margin:3vh 0;text-align: center;}
     
-    input[id="menubutton"]:checked ~ .container .menuWin{top:0;}
+    input[id="menubutton"]:checked ~ .container .menuWin{top:0; opacity:1;} 
 		
 
 		@media screen and (max-width:786px)	and (min-width: 320px) {
@@ -86,14 +89,17 @@
     			.contact p{font-family: noto-sans-cjk-kr, sans-serif; font-weight: 400; font-size:3vw;}
     			.menu{position: fixed; top:2vh; right:2vw; width:8vh; height:8vh;background-color:white; margin:0;}
           .main{padding-top:15%;}
+          .p {font-size:4vw; word-break: break-all;}
+          .reset {display: block;}
       
          
     			
     			.B20 {width:12vw;}
-          .B50{margin-right: 3vw; width:40vw;}
+          .B50{ width:60vw;}
           .B70 {margin-left: 5vw; width:70vw;}
     			.B30 h3{font-size: 3.8vw;}
           .list div {margin-bottom: 0.8vh;}
+          .second {margin-bottom: 3vh;}
           .list p {font-family: 'GmarketSansMedium'; font-size:3.8vw; word-break:keep-all; font-weight:400;}
 }
 @media screen and (max-width:1024px) and (min-width:786px) {
@@ -185,12 +191,10 @@
     </style>
   </head>
   <body >
-    <script> 
-            AOS.init(); 
-        </script>
+    
       <input type="checkbox" name="menubutton" id="menubutton">
   				<header class="relative">
-  								<div class="altop  top">
+  								<div class="altop  top" >
   											<div class="flex">
   																<div class="icon">
                                         <img src="./icon.png";>  
@@ -229,8 +233,8 @@
                 
                 </div>
           </div>
-  				<section class="main" aos="fade-up">
-                  <div>
+  				<section class="main" id="top">
+                  <div >
                       <h2>Hello World.</h2>
                     
                   </div>
@@ -244,7 +248,7 @@
                   </div>
           </section>
   				<section>
-  								<div class="text">
+  								<div class="text" data-aos="fade-down">
   										<div></div>
                       
   										<div>
@@ -259,10 +263,10 @@
 
   				</section>
   				<section>
-  								<div class="text list">
+  								<div class="text list" data-aos="fade-down">
   										<div></div>
-  										<div>
-  												<h3>Project</h3>
+  										<div >
+  												<h3 class="second">Project</h3>
   										</div>
                       <div class="list">
                       <div class="flex">
@@ -310,7 +314,7 @@
   								
   				</section>
           <footer>
-                  <div class="text">
+                  <div class="text" data-aos="fade-down">
                       <div></div>
                       <div>
                           <h3>Contact</h3>
@@ -319,19 +323,19 @@
                       <div>
                         <h3>황수영</h3>
                         <h3>연성건설 스마트리빙부 과장</h3>
-                        <div class="flex">
+                        <div class="flex reset">
                           <div class="B50">
-                            <p>SooH_Sparrow@cmail.com</p>
-                            <p>010 0428 8240</p>
+                            <p class="p">SooH_Sparrow@cmail.com</p>
+                            <p class="p">010 0428 8240</p>
                           </div>
                           <div class="B50">
-                            <p>서울특별시 강남구 신사동 </p>
-                            <p>연성로 6-1 연성빌딩 A </p>
-                            <p>8층 405호</p>
+                            <p class="p">서울특별시 강남구 신사동 </p>
+                            <p class="p">연성로 6-1 연성빌딩 A </p>
+                            <p class="p">8층 405호</p>
                           </div>
                         </div>
                       <div>
-                        <p>**이 사이트에 나오는 모든 기업, 기관, 인물, 지명 등은 모두 허구입니다.</p>
+                        <p>**이 사이트에 나오는 기업, 기관, 인물, 지명 등은 모두 허구입니다.</p>
                       </div>
                         <div class="flex">
                           <div class="B50">
@@ -344,14 +348,21 @@
                       </div>
 
                   </div>
-                      
 
           </footer>
+          <div class="flex bottom" >
+            <h3>Intro 페이지 끝</h3>
+            <a href="#top"><h3>맨 위로</h3> </a>
+          </div>
 
 
 
           <script src="./lottie.js" type="text/javascript"></script>
           <script src="./index.js"></script>
+
+          <script> 
+            AOS.init(); 
+          </script>
   
           
   </body>
