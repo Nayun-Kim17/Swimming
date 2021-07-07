@@ -14,6 +14,9 @@
 	          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
 	        })(document);
      	 </script>
+       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> 
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
 
 	<title>Swimming Sparrow</title>
     <style>
@@ -25,10 +28,33 @@
 		    font-style: normal;
 		}
 		@import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css); .jejumyeongjo * { font-family: 'Jeju Myeongjo', serif; }
-    *{background-color: #F2F2F2; margin:0;}
+    *{background-color: #F2F2F2; margin:0; }
     ul{list-style-type: none;}
-    .menu{content: }
-		
+    a{text-decoration: none; color:black;}
+    
+		#menubutton{display: none;}
+    .top{z-index: 10;}
+    .altop{z-index: }
+    .menu{cursor: pointer;}
+    .container{box-sizing:border-box;}
+    .menuWin{
+      box-sizing:border-box;
+      justify-content: space-around; vertical-align: middle; align-items: center; text-align: center;
+      padding-top:24vh;
+      width:100vw;
+      height:100vh;
+      background-color: #F2F2F2;
+      position:fixed;
+      z-index:1;
+      top:-100vh;
+      left:0;
+      transition:0.35s;
+    }
+    .buttons{width:100vw; height:100vh;  justify-content: space-around; vertical-align: middle; align-items: center; text-align: center;  }
+
+     .menuWin p{font-family:'GmarketSansMedium'; font-weight:normal; font-size:5vh; margin:3vh 0;text-align: center;}
+    
+    input[id="menubutton"]:checked ~ .container .menuWin{top:0;}
 		
 
 		@media screen and (max-width:786px)	and (min-width: 320px) {
@@ -48,17 +74,20 @@
     			
     			.relative{position:relative;}
     			.flex{display:flex; vertical-align: top; justify-content: top; align-items:top;}
-    			.altop{position:fixed; top:0; left:0; width:100%; height:12vh; display:flex; padding:1% 5%; vertical-align:middle; background-color:#F2F2F2; margin:0 auto; min-height:10vh; max-height:12vh;}
-          .altop div{margin:auto 0;}
-    			.altop > div:not(:first-child) {margin:auto; margin-left:3vw; display:inline-block; vertical-align: middle; justify-content: center; align-items: center;}
+    			.altop{position:fixed; top:0; left:0; width:100%; height:12vh; display:flex; padding:1%; vertical-align:middle; background-color:#F2F2F2; margin:0 auto; min-height:10vh; max-height:12vh;}
+          .altop div{margin:auto ;}
+    			
     			.altop p{font-size:3vw;}
     			.title p{font-family:'GmarketSansMedium'; font-size:5vw;}
     			.icon{width: 14vw; height:auto;  min-width: 50px; margin:0 0;}
     			.title{margin:0 0; margin-left:10%;}
     			.title p{font-family:'GmarketSansMedium'; font-weight:normal; font-size:5vw;text-align: center;}
+          .contact {display:none;}
     			.contact p{font-family: noto-sans-cjk-kr, sans-serif; font-weight: 400; font-size:3vw;}
-    			.menu{position: relative; bottom:0; right:-10vw; width:auto; height:8vh;background-color:white; margin:0;}
+    			.menu{position: fixed; top:2vh; right:2vw; width:8vh; height:8vh;background-color:white; margin:0;}
           .main{padding-top:15%;}
+      
+         
     			
     			.B20 {width:12vw;}
           .B50{margin-right: 3vw; width:40vw;}
@@ -74,11 +103,11 @@
           section div{margin-bottom:2vh;  }
           footer{margin-top:12vh; padding:8% 20%; margin-bottom:12vh;}
           footer div{margin-bottom:2vh;}
-          footer p{font-size:2vw; font-weight:400; line-height:170%;}
+          footer p{font-size:1.3vw; font-weight:400; line-height:170%;}
           img{display: block; width:50%;  }
           h1{font-family: 'GmarketSansMedium'; font-size:7vw; word-break:keep-all;font-weight:400; }
           h2{font-family:'Jeju Myeongjo', serif; font-size:10vw; font-weight:400; line-height:2.5em;}
-          h3{font-family: 'GmarketSansMedium'; font-size:3.2vw; word-break:keep-all; font-weight:400; line-height: 160%; }
+          h3{font-family: 'GmarketSansMedium'; font-size:2.8vw; word-break:keep-all; font-weight:400; line-height: 160%; }
           p{ font-family:'noto-sans-cjk-kr';font-size:2vw; font-weight:400; line-height:170%;text-align:justify-all;}
           
           .relative{position:relative;}
@@ -94,14 +123,15 @@
           .contact p{font-family: noto-sans-cjk-kr, sans-serif; font-weight: 400; font-size:1.3vw;}
           .menu{position: relative; bottom:0; right:-20vw; width:auto; height:9vh; margin:0;}
           .main{padding:8% 5%;}
+          
 
           
           .B20 { width:15vw;}
-          .B50{margin-right: 3vw; width:40vw;}
+          .B50{margin-right: 3vw; width:20vw;}
           .B70 {margin-left: 1vw; width:75vw;}
           .B30 h3{font-size: 3.2vw;}
           .list div {margin-bottom: 2vh;}
-          .list p {font-family: 'GmarketSansMedium'; font-size:3.2vw; word-break:keep-all; font-weight:400;}
+          .list p {font-family: 'GmarketSansMedium'; font-size:2.3vw; word-break:keep-all; font-weight:400;}
           .B90{width:90%; word-break: keep-all; }
         }
     			
@@ -121,7 +151,7 @@
           
           .relative{position:relative;}
           .flex{display:flex; vertical-align: top; justify-content: top; align-items:top;}
-          .altop{position:fixed; top:0; left:0; width:100%; height:6vh; display:flex; padding:1% 5%; vertical-align:middle; background-color:#F2F2F2 margin:0 auto; min-height:10vh; max-height:12vh;}
+          .altop{position:fixed; top:0; left:0; width:100%; height:6vh;  display:flex; padding:1% 5%; vertical-align:middle; background-color:#F2F2F2 margin:0 auto; min-height:10vh; max-height:12vh;}
           .altop div{margin:auto 0;}
           .altop > div:not(:first-child) {margin:auto; margin-left:1vw; display:inline-block; vertical-align: middle; justify-content: center; align-items: center;}
           
@@ -137,7 +167,7 @@
           .text>div:first-child {width:8vw; }
           .text>div:nth-child(2) {width:12vw; }
 
-          .text>div:not(:nth-child(-n+2)) {margin-left: 5vw;}
+          
 
           
           .B20 { width:6vw;}
@@ -154,9 +184,13 @@
     			
     </style>
   </head>
-  <body class="relative">
-  				<header class="altop">
-  								
+  <body >
+    <script> 
+            AOS.init(); 
+        </script>
+      <input type="checkbox" name="menubutton" id="menubutton">
+  				<header class="relative">
+  								<div class="altop  top">
   											<div class="flex">
   																<div class="icon">
                                         <img src="./icon.png";>  
@@ -170,15 +204,32 @@
   																<p>010 0428 8240 </p>
   																<p>SwimH@cmail.com</p>
   											</div>
-                      <div class="menu" id="menu">
+                        <div class="menu" >
+                          
+                          
+                             
+                          <label for="menubutton" id="menu">
+                          </label>
+                        </div>
                         
-                      </div>
 
-  													
+  											</div>	
+
   								
   								
   				 </header>
-  				<section class="main">
+          <div class="container">
+                <div class="menuWin">
+                  <p>Main</p>
+                  <p>Profile</p>
+                  <p>SY Pool</p>
+                  <p>Gallery</p>
+                  <p>Log</p>
+                  
+                
+                </div>
+          </div>
+  				<section class="main" aos="fade-up">
                   <div>
                       <h2>Hello World.</h2>
                     
@@ -279,7 +330,19 @@
                             <p>8층 405호</p>
                           </div>
                         </div>
+                      <div>
+                        <p>**이 사이트에 나오는 모든 기업, 기관, 인물, 지명 등은 모두 허구입니다.</p>
                       </div>
+                        <div class="flex">
+                          <div class="B50">
+                              <p><a href="https://twitter.com/Ner_comu">오너: @Ner_Comu</a></p>
+                          </div>
+                          <div class="B50">
+                              <p>마지막 업데이트: 2021. 07. 07</p>
+                          </div>
+                        </div>
+                      </div>
+
                   </div>
                       
 
